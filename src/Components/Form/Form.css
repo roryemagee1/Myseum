@@ -12,5 +12,11 @@
   /* font-weight: bold; */
   font-family: 'Eczar', serif;
   font-family: 'Open Sans', sans-serif;
-  font-family: 'Pacifico', cursive; 
+  font-family: 'Pacifico', cursive;
+  border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0) rgba(0, 0, 0, 1) rgba(255, 255, 255, 0);
+}
+
+::-webkit-input-placeholder {
+  color: black;
+  opacity: 0.5;
 }
