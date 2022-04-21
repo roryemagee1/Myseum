@@ -3,21 +3,25 @@ import easelandcanvas from './Assets/easelandcanvas.png';
 import artExhibit from './Assets/ArtExhibit.jpeg'
 import React, { Component } from 'react';
 import Form from './Components/Form/Form.js';
+import Canvas from './Components/Canvas/Canvas.js';
 import apiCalls from './apiCalls';
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      paintingIDs: []
+      paintingIDs: [],
+      paintings: []
     }
   }
   
   searchPaintings = (search) => {
-    console.log(search);
+    this.setState({ paintingIDs: [], paintings: [] })
     apiCalls.fetchPaintingIDs(search)
-      .then(data => console.log(data))
+      .then(data => this.setState({ paintingIDs: data.objectIDs }))
       .catch(error => console.log(error));
+    const allPaintings = this.state.paintingIDs.map(id => apiCalls.fetchPainting(id).then(data => data));
+    this.setState({ ...this.state, paintings: allPaintings });
   }
   
   render() {
@@ -28,7 +32,7 @@ class App extends Component {
         <main>
           <img src={easelandcanvas} className="easel" alt="Easel and canvas"/>
           <div className="easel-window">
-
+          <Canvas paintings={this.state.paintingIDs}/>
           </div>
           <Form searchPaintings={this.searchPaintings}/>
         </main>
