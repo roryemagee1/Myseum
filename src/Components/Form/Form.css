@@ -19,6 +19,9 @@
 .search-button {
   border-color: black;
   background-color: rgba(255, 255, 255, 0);
+  font-family: 'Eczar', serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Pacifico', cursive;
 }
 
 ::-webkit-input-placeholder {
