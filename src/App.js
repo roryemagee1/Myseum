@@ -13,8 +13,8 @@ class App extends Component {
     return (
       <div className="everything">
         <h1 className="title"> Myseum </h1>
-        <img src={artExhibit} className="background" />
-        <img src={easelandcanvas} className="easel" />
+        <img src={artExhibit} className="background" alt="Posh art exhibit"/>
+        <img src={easelandcanvas} className="easel" alt="Easel and Canvas"/>
       </div>
     );
   }
