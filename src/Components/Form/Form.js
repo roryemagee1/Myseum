@@ -16,9 +16,10 @@ class Form extends Component {
   
   render() {
     return (
-      <div className="search">
+      <form className="search">
         <input className="search-bar" type="text" placeholder="Search" value={this.state.search} name="search" onChange={(e) => this.updateSearch(e)}/>
-      </div>
+        <button className="search-button"> Go </button>
+      </form>
     );
   }
 }
