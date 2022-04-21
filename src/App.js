@@ -2,14 +2,22 @@ import './App.css';
 import easelandcanvas from './Assets/easelandcanvas.png';
 import artExhibit from './Assets/ArtExhibit.jpeg'
 import React, { Component } from 'react';
-import Form from './Components/Form/Form.js'
+import Form from './Components/Form/Form.js';
+import apiCalls from './apiCalls';
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      paintings: []
+      paintingIDs: []
     }
+  }
+  
+  searchPaintings = (search) => {
+    console.log(search);
+    apiCalls.fetchPaintingIDs(search)
+      .then(data => console.log(data))
+      .catch(error => console.log(error));
   }
   
   render() {
@@ -22,7 +30,7 @@ class App extends Component {
           <div className="easel-window">
 
           </div>
-          <Form />
+          <Form searchPaintings={this.searchPaintings}/>
         </main>
       </div>
     );
