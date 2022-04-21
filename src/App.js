@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="everything">
-        <h1 className="title"> Myseum</h1>
+        <h1 className="title"> Myseum </h1>
         <img src={artExhibit} className="background" />
         <img src={easelandcanvas} className="easel" />
       </div>
