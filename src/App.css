@@ -1,16 +1,35 @@
 .easel {
-  height: 100vh;
+  /* height: 90vh;
+  width: 80vw;
+  left: 10vw;
+  right: 10vw;
+  position: relative; */
+  object-fit: contain;
+  height: 90%;
+  width: 80%;
+  position: fixed;
+  top: 10vh;
+  left: 10%;
+  z-index: -1;
 }
 
 .background {
-  background-image: url(./Assets/ArtExhibit.jpeg);
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
 }
 
-.easel-container {
-  display: flex;
-  justify-content: center;
+.everything {
+  height: 100vh;
+  width: 100vh;
+}
+
+.title {
+  text-align: center;
 }
 
 .placeholder {
