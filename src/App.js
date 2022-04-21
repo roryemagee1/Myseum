@@ -7,7 +7,9 @@ import Form from './Components/Form/Form.js'
 class App extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      paintings: []
+    }
   }
   
   render() {
@@ -16,7 +18,7 @@ class App extends Component {
         <h1 className="title"> Myseum </h1>
         <img src={artExhibit} className="background" alt="Posh art exhibit"/>
         <main>
-          <img src={easelandcanvas} className="easel" alt="Easel and Canvas"/>
+          <img src={easelandcanvas} className="easel" alt="Easel and canvas"/>
           <div className="easel-window">
 
           </div>
