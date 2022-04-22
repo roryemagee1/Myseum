@@ -17,12 +17,17 @@ class App extends Component {
   
   searchPaintings = async (search) => {
     this.setState({ paintingIDs: [], paintings: [] })
-    apiCalls.fetchPaintingIDs(search)
-      .then(data => this.setState({ paintingIDs: data.objectIDs, paintings: [] }))
-      .catch(error => console.log(error));
-    let output = [];
-    setTimeout(() => {this.state.paintingIDs.forEach(id => apiCalls.fetchPainting(id).then(data => output.push(data) ))}, 1000);
-    setTimeout(() => {this.setState({ paintings: output})}, 3000);
+    const dataPromisePID = apiCalls.fetchPaintingIDs(search);
+    const dataPID = await dataPromisePID
+    const paintingPromises = dataPID.objectIDs.map(id => apiCalls.fetchPainting(id));
+    const paintingsList = await Promise.all(paintingPromises);
+    console.log(paintingsList)
+    this.setState({ paintings: paintingsList })
+      // .then(data => this.setState({ paintingIDs: data.objectIDs, paintings: [] }))
+      // .catch(error => console.log(error));
+    // let output = [];
+    // setTimeout(() => {this.state.paintingIDs.forEach(id => apiCalls.fetchPainting(id).then(data => output.push(data) ))}, 1000);
+    // setTimeout(() => {this.setState({ paintings: output})}, 3000);
   }
 
   // getPaintings = () => {
