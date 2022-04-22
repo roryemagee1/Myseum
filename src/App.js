@@ -22,7 +22,7 @@ class App extends Component {
       .catch(error => console.log(error));
     let output = [];
     setTimeout(() => {this.state.paintingIDs.forEach(id => apiCalls.fetchPainting(id).then(data => output.push(data) ))}, 1000);
-    setTimeout(() => {this.setState({ paintings: output})}, 2000);
+    setTimeout(() => {this.setState({ paintings: output})}, 3000);
   }
 
   // getPaintings = () => {
@@ -37,7 +37,7 @@ class App extends Component {
         <main>
           <img src={easelandcanvas} className="easel" alt="Easel and canvas"/>
           <div className="easel-window">
-          <Canvas paintingIDs={this.state.paintingIDs}/>
+          <Canvas paintings={this.state.paintings}/>
           </div>
           <Form searchPaintings={this.searchPaintings}/>
         </main>

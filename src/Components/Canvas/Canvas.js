@@ -3,16 +3,16 @@ import React from 'react';
 import Art from '../Art/Art.js';
 import apiCalls from '../../apiCalls';
 
-const Canvas = ({ paintingIDs }) => {
-  // let paintings = [];
-  // paintingIDs.forEach(id=> apiCalls.fetchPainting(id)
-  //   .then(data => paintings.push(data)))
-  // let output = paintings.map(painting => <img src={painting.primaryImage} alt={painting.title}/>)
-  // console.log(output);
+const Canvas = ({ paintings }) => {
+  let output = paintings.map((painting, index) => {
+    if (painting.primaryImage) {
+      return <img className="container" src={painting.primaryImage} alt={painting.title} key={index} id={index}/>
+    }
+  })
 
   return (
-    <div>
-      {/* {paintings} */}
+    <div className="grid">
+      {output}
     </div>
   )
 }

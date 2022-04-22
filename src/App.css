@@ -46,10 +46,12 @@
 }
 
 .easel-window {
-  height: 60vh;
+  height: 65vh;
   width: 60vw;
   position: relative;
-  top: 5vh;
+  top: 0vh;
   left: 19vw;
   background-color: rgba(255, 255, 255, 0.5);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
