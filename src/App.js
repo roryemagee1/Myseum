@@ -15,14 +15,19 @@ class App extends Component {
     }
   }
   
-  searchPaintings = (search) => {
+  searchPaintings = async (search) => {
     this.setState({ paintingIDs: [], paintings: [] })
     apiCalls.fetchPaintingIDs(search)
-      .then(data => this.setState({ paintingIDs: data.objectIDs }))
+      .then(data => this.setState({ paintingIDs: data.objectIDs, paintings: [] }))
       .catch(error => console.log(error));
-    const allPaintings = this.state.paintingIDs.map(id => apiCalls.fetchPainting(id).then(data => data));
-    this.setState({ ...this.state, paintings: allPaintings });
+    let output = [];
+    setTimeout(() => {this.state.paintingIDs.forEach(id => apiCalls.fetchPainting(id).then(data => output.push(data) ))}, 1000);
+    setTimeout(() => {this.setState({ paintings: output})}, 2000);
   }
+
+  // getPaintings = () => {
+  //   this.state.paintingIDs.forEach(id => apiCalls.fetchPainting(id).then(data => console.log(data)));
+  // }
   
   render() {
     return (
@@ -32,7 +37,7 @@ class App extends Component {
         <main>
           <img src={easelandcanvas} className="easel" alt="Easel and canvas"/>
           <div className="easel-window">
-          <Canvas paintings={this.state.paintingIDs}/>
+          <Canvas paintingIDs={this.state.paintingIDs}/>
           </div>
           <Form searchPaintings={this.searchPaintings}/>
         </main>
