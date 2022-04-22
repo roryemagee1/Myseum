@@ -17,11 +17,11 @@ class App extends Component {
   
   searchPaintings = async (search) => {
     this.setState({ paintingIDs: [], paintings: [] })
-    const dataPromisePID = apiCalls.fetchPaintingIDs(search);
-    const dataPID = await dataPromisePID
-    const paintingPromises = dataPID.objectIDs.map(id => apiCalls.fetchPainting(id));
+    const promisePaintingIDs = apiCalls.fetchPaintingIDs(search);
+    const dataIDs = await promisePaintingIDs;
+    const paintingPromises = dataIDs.objectIDs.map(id => apiCalls.fetchPainting(id));
     const paintingsList = await Promise.all(paintingPromises);
-    this.setState({ paintings: paintingsList })
+    this.setState({ paintings: paintingsList });
   }
   
   render() {
