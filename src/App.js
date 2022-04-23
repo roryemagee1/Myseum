@@ -45,12 +45,12 @@ class App extends Component {
     //     return { paintings: output }
     //   })
     }
-    setTimeout(() => this.updateFavorite(), 100);
+    setTimeout(() => this.updateSaves(), 100);
   }
 
-  updateFavorite = () => {
-    let saves = this.state.paintings.filter(painting => painting.isSaved);
-    this.setState({ saved: saves })
+  updateSaves = () => {
+    let addSaves = this.state.paintings.filter(painting => painting.isSaved);
+    this.setState({ saves: [...this.state.saves, ...addSaves] })
   }
   
   render() {

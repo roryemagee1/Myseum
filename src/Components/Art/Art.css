@@ -6,9 +6,12 @@
   background-color: white; */
 }
 
-.star {
-  height: 1em;
-  width: 1em;
+.save-button {
+  border-color: black;
+  background-color: rgba(255, 255, 255, 0);
+  font-family: 'Eczar', serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Pacifico', cursive;
 }
 
 .image {
@@ -21,6 +24,14 @@
 
 .painting-writing {
   font-size: 0.5em;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  background-color: rgba(255, 255, 255, 0);
+  font-family: 'Eczar', serif;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  /* font-family: 'Pacifico', cursive; */
   display: none;
  }
 

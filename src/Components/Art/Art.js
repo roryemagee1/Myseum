@@ -14,7 +14,7 @@ const Art = ({ id, title, artistDisplayName, primaryImage, isSaved, toggleSave})
   // }
   return (
     <div  className="container">
-      <button id={id} onClick={(e) => toggleSave(e)}> {saveStatus} </button>
+      <button className="save-button" id={id} onClick={(e) => toggleSave(e)}> {saveStatus} </button>
       {/* <img className="star" src={star} alt="Inactive favorite star" id={id} onClick={(e) => toggleFavorite(e)}/> */}
       <img className="image" src={primaryImage} alt={title} />
       <p className="painting-writing"> {title} by {artistDisplayName} </p>
