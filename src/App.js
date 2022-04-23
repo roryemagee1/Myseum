@@ -10,12 +10,13 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      paintings: []
+      paintings: [],
+      favorites: []
     }
   }
   
   searchPaintings = async (search) => {
-    this.setState({ paintingIDs: [] })
+    this.setState({ paintings: [] })
     const promisePaintingIDs = apiCalls.fetchPaintingIDs(search);
     const dataIDs = await promisePaintingIDs;
     const paintingPromises = dataIDs.objectIDs.map(id => apiCalls.fetchPainting(id));
@@ -33,36 +34,24 @@ class App extends Component {
     const itemToChange = this.state.paintings.findIndex(painting => painting.objectID == input);
     if (!this.state.paintings[itemToChange].isFavorite) {
       this.setState(prevState => {
-        let output = prevState;
-        output.paintings[itemToChange].isFavorite = true;
-        return { paintings: output.paintings }
+        let output = prevState.paintings;
+        output[itemToChange].isFavorite = true;
+        return { paintings: output }
       })
     } else if (this.state.paintings[itemToChange].isFavorite) {
       this.setState(prevState => {
-        let output = prevState;
-        output.paintings[itemToChange].isFavorite = false;
-        return { paintings: output.paintings }
+        let output = prevState.paintings;
+        output[itemToChange].isFavorite = false;
+        return { paintings: output }
       })
     }
+    setTimeout(() => this.updateFavorite(), 100);
   }
 
-  // favoritePainting = (id) => {
-  //   const favorite = this.state.paintings.find(painting => painting.objectID === id)
-  //   this.setState({ favorited: [...this.state.favorited, favorite] })
-  // }
-
-  // unfavoritePainting = (id) => {
-  //   const favoritesLeft = this.state.favorited.filter(painting=> painting.objectID !== id)
-  //   this.setState({ favorited: [favoritesLeft] })
-  // }
-
-  // toggleFavorite = (id) => {
-  //   if (this.state.favorited.some(favorite => favorite.objectID === id)) {
-  //     this.unfavoritePainting(id);
-  //   } else if (!this.state.favorited.find(favorite => favorite.objectID === id)) {
-  //     this.favoritePainting(id);
-  //   }
-  // }
+  updateFavorite = () => {
+    let favorites = this.state.paintings.filter(painting => painting.isFavorite);
+    this.setState({ favorites: favorites })
+  }
   
   render() {
     return (
