@@ -1,10 +1,14 @@
 import './Art.css'
 import React from 'react';
+import goldStar from '../../Assets/gold-star.png';
+import blackStar from '../../Assets/black-star.png';
 
-const Art = () => {
+const Art = ({ title, artistDisplayName, primaryImage }) => {
   return (
-    <div>
-      <h1> Test </h1>
+    <div className="container">
+      <img className="star" src={blackStar} alt="Inactive favorite star" />
+      <img className="image" src={primaryImage} alt={title} />
+      <p className="painting-writing"> {title} by {artistDisplayName} </p>
     </div>
   )
 }
