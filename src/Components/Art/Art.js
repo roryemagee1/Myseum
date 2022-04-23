@@ -3,10 +3,12 @@ import React from 'react';
 
 const Art = ({ id, title, artistDisplayName, primaryImage, isSaved, toggleSave, view }) => {
   let saveStatus = "Save?";
-  if (!isSaved && view) {
-    saveStatus = "Unsaved";
+  if (isSaved && view) {
+    saveStatus = "Unsave?";
+  } else if (!isSaved && view) {
+    saveStatus = "Unsaved!";
   } else if (isSaved) {
-    saveStatus = "Saved!";
+    saveStatus = "Saved!"
   }
   return (
     <div  className="container">

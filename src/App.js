@@ -45,25 +45,29 @@ class App extends Component {
 
   addSaves = () => {
     let additions = this.state.paintings.filter(painting => painting.isSaved);
-    this.setState({ saves: [...this.state.saves, ...additions] })
+    additions.forEach(addition => {
+      if (!this.state.saves.some(save => save.objectID == addition.objectID)) {
+        this.setState({ saves: [...this.state.saves, addition] })
+      }
+    }) 
   }
 
   unSave = (e) => {
     e.preventDefault();
     const input = e.target.id;
-    const itemToChange = this.state.paintings.findIndex(painting => painting.objectID == input);
-    if (this.state.paintings[itemToChange].isSaved) {
+    const itemToChange = this.state.saves.findIndex(save => save.objectID == input);
+    if (this.state.saves[itemToChange].isSaved) {
       this.setState(prevState => {
-        let output = prevState.paintings;
+        let output = prevState.saves;
         output[itemToChange].isSaved = false;
-        return { paintings: output }
+        return { saves: output }
       })
     }
     setTimeout(() => this.removeSaves(), 100);
   }
 
   removeSaves = () => {
-    let leftOvers = this.state.paintings.filter(saves => saves.isSaved);
+    let leftOvers = this.state.saves.filter(saves => saves.isSaved);
     this.setState({ saves: [...leftOvers] });
   }
 
