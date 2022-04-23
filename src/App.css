@@ -8,7 +8,7 @@
   height: 90%;
   width: 80%;
   position: fixed;
-  top: 10vh;
+  top: 10%;
   left: 10%;
   z-index: -1;
 }
@@ -52,6 +52,11 @@
   top: 0vh;
   left: 19vw;
   /* background-color: rgba(255, 255, 255, 0.5); */
+  /* height: 55%;
+  width: 60%;
+  position: fixed;
+  top: 20vh;
+  left: 19vw; */
   overflow-x: hidden;
   overflow-y: auto;
 }

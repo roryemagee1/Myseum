@@ -58,10 +58,10 @@ class App extends Component {
       <div className="everything">
         <h1 className="title"> Myseum </h1>
         <img src={artExhibit} className="background" alt="Posh art exhibit"/>
+        <img src={easelandcanvas} className="easel" alt="Easel and canvas"/>
         <main>
-          <img src={easelandcanvas} className="easel" alt="Easel and canvas"/>
           <div className="easel-window">
-          <Canvas paintings={this.state.paintings} saves={this.state.saves} toggleSave={this.toggleSave}/>
+            <Canvas paintings={this.state.paintings} saves={this.state.saves} toggleSave={this.toggleSave}/>
           </div>
           <Form searchPaintings={this.searchPaintings}/>
         </main>
