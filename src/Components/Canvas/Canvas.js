@@ -4,10 +4,6 @@ import Art from '../Art/Art.js';
 
 const Canvas = ({ paintings, favorited, toggleFavorite }) => {
   let output = paintings.filter(painting => painting.primaryImage).map(painting => {  
-    let starStatus = false;
-    if (favorited.some(favorite => favorite.objectID === painting.objectID)) {
-      starStatus = true;
-    }
       return (
         <Art 
           key={painting.objectID} 
@@ -16,7 +12,7 @@ const Canvas = ({ paintings, favorited, toggleFavorite }) => {
           artistDisplayName={painting.artistDisplayName}
           primaryImage={painting.primaryImage}
           toggleFavorite={toggleFavorite}
-          starStatus={starStatus}
+          favorited={favorited}
         />
       )
     // if (painting.primaryImage) {
