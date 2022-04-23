@@ -2,8 +2,12 @@ import './Canvas.css'
 import React from 'react';
 import Art from '../Art/Art.js';
 
-const Canvas = ({ paintings }) => {
-  let output = paintings.filter(painting => painting.primaryImage).map(painting => {
+const Canvas = ({ paintings, favorited, toggleFavorite }) => {
+  let output = paintings.filter(painting => painting.primaryImage).map(painting => {  
+    let starStatus = false;
+    if (favorited.some(favorite => favorite.objectID === painting.objectID)) {
+      starStatus = true;
+    }
       return (
         <Art 
           key={painting.objectID} 
@@ -11,6 +15,8 @@ const Canvas = ({ paintings }) => {
           title={painting.title}
           artistDisplayName={painting.artistDisplayName}
           primaryImage={painting.primaryImage}
+          toggleFavorite={toggleFavorite}
+          starStatus={starStatus}
         />
       )
     // if (painting.primaryImage) {
