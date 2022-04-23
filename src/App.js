@@ -11,7 +11,7 @@ class App extends Component {
     super()
     this.state = {
       paintings: [],
-      favorites: []
+      saves: []
     }
   }
   
@@ -22,35 +22,35 @@ class App extends Component {
     const paintingPromises = dataIDs.objectIDs.map(id => apiCalls.fetchPainting(id));
     const paintingsList = await Promise.all(paintingPromises);
     const listWithStars = paintingsList.map(painting => {
-      painting["isFavorite"] = false;
+      painting["isSaved"] = false;
       return painting
     })
     this.setState({ paintings: listWithStars });
   }
 
-  toggleFavorite = (e) => {
+  toggleSave = (e) => {
     e.preventDefault();
     const input = e.target.id;
     const itemToChange = this.state.paintings.findIndex(painting => painting.objectID == input);
-    if (!this.state.paintings[itemToChange].isFavorite) {
+    if (!this.state.paintings[itemToChange].isSaved) {
       this.setState(prevState => {
         let output = prevState.paintings;
-        output[itemToChange].isFavorite = true;
+        output[itemToChange].isSaved = true;
         return { paintings: output }
       })
-    } else if (this.state.paintings[itemToChange].isFavorite) {
-      this.setState(prevState => {
-        let output = prevState.paintings;
-        output[itemToChange].isFavorite = false;
-        return { paintings: output }
-      })
+    // } else if (this.state.paintings[itemToChange].isFavorite) {
+    //   this.setState(prevState => {
+    //     let output = prevState.paintings;
+    //     output[itemToChange].isFavorite = false;
+    //     return { paintings: output }
+    //   })
     }
     setTimeout(() => this.updateFavorite(), 100);
   }
 
   updateFavorite = () => {
-    let favorites = this.state.paintings.filter(painting => painting.isFavorite);
-    this.setState({ favorites: favorites })
+    let saves = this.state.paintings.filter(painting => painting.isSaved);
+    this.setState({ saved: saves })
   }
   
   render() {
@@ -61,7 +61,7 @@ class App extends Component {
         <main>
           <img src={easelandcanvas} className="easel" alt="Easel and canvas"/>
           <div className="easel-window">
-          <Canvas paintings={this.state.paintings} favorited={this.state.favorited} toggleFavorite={this.toggleFavorite}/>
+          <Canvas paintings={this.state.paintings} saves={this.state.saves} toggleSave={this.toggleSave}/>
           </div>
           <Form searchPaintings={this.searchPaintings}/>
         </main>

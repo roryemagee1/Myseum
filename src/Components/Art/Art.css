@@ -16,7 +16,7 @@
 }
 
 .image:hover + .painting-writing {
-  display:flex;
+  display: flex;
 }
 
 .painting-writing {

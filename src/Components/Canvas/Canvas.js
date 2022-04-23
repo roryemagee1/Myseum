@@ -2,7 +2,7 @@ import './Canvas.css'
 import React from 'react';
 import Art from '../Art/Art.js';
 
-const Canvas = ({ paintings, toggleFavorite }) => {
+const Canvas = ({ paintings, toggleSave }) => {
   let output = paintings.filter(painting => painting.primaryImage).map(painting => {  
     // console.log(painting.objectID);
       return (
@@ -12,8 +12,8 @@ const Canvas = ({ paintings, toggleFavorite }) => {
           title={painting.title}
           artistDisplayName={painting.artistDisplayName}
           primaryImage={painting.primaryImage}
-          isFavorite={painting.isFavorite}
-          toggleFavorite={toggleFavorite}
+          isSaved={painting.isSaved}
+          toggleSave={toggleSave}
         />
       )
   })
