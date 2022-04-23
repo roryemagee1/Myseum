@@ -2,18 +2,18 @@ import './Canvas.css'
 import React from 'react';
 import Art from '../Art/Art.js';
 
-const Canvas = ({ paintings, toggleSave }) => {
-  let output = paintings.filter(painting => painting.primaryImage).map(painting => {  
-    // console.log(painting.objectID);
+const Canvas = ({ inputs, toggleSave, view }) => {
+  let output = inputs.filter(input => input.primaryImage).map(input => {  
       return (
         <Art 
-          key={painting.objectID} 
-          id={painting.objectID}
-          title={painting.title}
-          artistDisplayName={painting.artistDisplayName}
-          primaryImage={painting.primaryImage}
-          isSaved={painting.isSaved}
+          key={input.objectID} 
+          id={input.objectID}
+          title={input.title}
+          artistDisplayName={input.artistDisplayName}
+          primaryImage={input.primaryImage}
+          isSaved={input.isSaved}
           toggleSave={toggleSave}
+          view={view}
         />
       )
   })

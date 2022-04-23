@@ -46,17 +46,34 @@
 }
 
 .easel-window {
-  height: 65vh;
+  /* height: 65vh;
   width: 60vw;
   position: relative;
   top: 0vh;
-  left: 19vw;
+  left: 19vw; */
   /* background-color: rgba(255, 255, 255, 0.5); */
-  /* height: 55%;
+  height: 55%;
   width: 60%;
   position: fixed;
   top: 20vh;
-  left: 19vw; */
+  left: 19vw;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.home-container {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 80%;
+  left: 38%;
+}
+
+.home-button {
+  border-color: black;
+  background-color: rgba(255, 255, 255, 0);
+  font-family: 'Eczar', serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Pacifico', cursive;
 }
