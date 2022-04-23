@@ -2,8 +2,9 @@ import './Canvas.css'
 import React from 'react';
 import Art from '../Art/Art.js';
 
-const Canvas = ({ paintings, favorited, toggleFavorite }) => {
+const Canvas = ({ paintings, toggleFavorite }) => {
   let output = paintings.filter(painting => painting.primaryImage).map(painting => {  
+    // console.log(painting.objectID);
       return (
         <Art 
           key={painting.objectID} 
@@ -11,13 +12,10 @@ const Canvas = ({ paintings, favorited, toggleFavorite }) => {
           title={painting.title}
           artistDisplayName={painting.artistDisplayName}
           primaryImage={painting.primaryImage}
+          isFavorite={painting.isFavorite}
           toggleFavorite={toggleFavorite}
-          favorited={favorited}
         />
       )
-    // if (painting.primaryImage) {
-    //   return <img className="container" src={painting.primaryImage} alt={painting.title} key={index} id={index}/>
-    // }
   })
 
   return (
