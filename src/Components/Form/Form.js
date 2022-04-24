@@ -1,5 +1,6 @@
 import './Form.css';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Form extends Component {
   constructor() {
@@ -10,13 +11,13 @@ class Form extends Component {
   }
 
   updateSearch = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const {name, value} = e.target;
     this.setState({ [name]: value });
   }
 
   submitSearch = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     this.props.searchPaintings(this.state.search);
     this.clearSearch();
   }
@@ -26,17 +27,23 @@ class Form extends Component {
   }
 
   updateView = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const newView = e.target.value;
     this.props.changeView(newView);
   }
   
   render() {
+    let query = this.state.search;
+
     return (
       <form className="search">
         <input className="search-bar" type="text" placeholder="Search" value={this.state.search} name="search" onChange={(e) => this.updateSearch(e)}/>
-        <button className="search-button" onClick={(e) => this.submitSearch(e)}> Go </button>
-        <button className="search-button" value="toSaves" onClick={(e) => this.updateView(e)}> View Saved Paintings </button>
+        <Link to={`/search/${query}`}>
+          <button className="search-button" onClick={(e) => this.submitSearch(e)}> Go </button>
+        </Link>
+        <Link to={`/saves`}>
+          <button className="search-button" value="toSaves" onClick={(e) => this.updateView(e)}> View Saved Paintings </button>
+        </Link>
       </form>
     );
   }
