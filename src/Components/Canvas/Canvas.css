@@ -18,3 +18,9 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 48%;
+}
