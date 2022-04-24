@@ -19,8 +19,10 @@ const Canvas = ({ inputs, toggleSave, view }) => {
   })
 
   return (
-    <div className="grid">
-      {output}
+    <div className="easel-window">
+      <div className="grid">
+        {output}
+      </div>
     </div>
   )
 }

@@ -89,17 +89,13 @@ class App extends Component {
         <main>
           {!this.state.view &&
             <section>
-              <div className="easel-window">
-                <Canvas view={this.state.view} inputs={this.state.paintings} toggleSave={this.activateSave}/>
-              </div>
+              <Canvas view={this.state.view} inputs={this.state.paintings} toggleSave={this.activateSave}/>
               <Form searchPaintings={this.searchPaintings} changeView={this.changeView}/>
             </section>
           }
           {this.state.view &&
             <section>
-              <div className="easel-window">
                 <Canvas view={this.state.view} inputs={this.state.saves} toggleSave={this.unSave}/>
-              </div>
               <div className="home-container">
                 <button className="home-button" value="" onClick={(e) => this.homeView(e)}> Return to Search </button>
               </div>
