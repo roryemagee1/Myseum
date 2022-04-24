@@ -88,7 +88,38 @@ class App extends Component {
         <img src={artExhibit} className="background" alt="Posh art exhibit"/>
         <img src={easelandcanvas} className="easel" alt="Easel and canvas"/>
         <main>
-          {!this.state.view &&
+          <Switch>
+            <Route exact path="/" render={() => {
+              return (
+                <section>
+                  <Canvas view={this.state.view} inputs={this.state.paintings} toggleSave={this.activateSave}/>
+                  <Form searchPaintings={this.searchPaintings} changeView={this.changeView}/>
+                </section>
+                )
+              }
+            }/>
+            {/* <Route exact path='/search/:q' render={() => {
+              return ( 
+                <section>
+                  <Canvas view={this.state.view} inputs={this.state.saves} toggleSave={this.unSave}/>
+                  <div className="home-container">
+                    <button className="home-button" value="" onClick={(e) => this.homeView(e)}> Return to Search </button>
+                  </div>
+                </section>
+                )
+              } 
+            }/> */}
+            <Route render={({ match }) => {
+              return (
+                <Redirect to='/' />
+              )
+            }
+            } />
+          </Switch>
+
+
+
+          {/* {!this.state.view &&
             <section>
               <Canvas view={this.state.view} inputs={this.state.paintings} toggleSave={this.activateSave}/>
               <Form searchPaintings={this.searchPaintings} changeView={this.changeView}/>
@@ -101,7 +132,7 @@ class App extends Component {
                 <button className="home-button" value="" onClick={(e) => this.homeView(e)}> Return to Search </button>
               </div>
             </section>
-          }
+          } */}
         </main>
       </div>
     );
