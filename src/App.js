@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import Form from './Components/Form/Form.js';
 import Canvas from './Components/Canvas/Canvas.js';
 import apiCalls from './apiCalls';
+import { Route, Redirect, Switch } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
