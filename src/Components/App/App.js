@@ -15,12 +15,12 @@ class App extends Component {
       saves: [],
       view: '',
       error: '',
-      loading: false
+      isLoading: false
     }
   }
   
   searchPaintings = async (search) => {
-    this.setState({ paintings: [] })
+    this.setState({ paintings: [], isLoading: true })
     const promisePaintingIDs = apiCalls.fetchPaintingIDs(search);
     const dataIDs = await promisePaintingIDs;
     const paintingPromises = dataIDs.objectIDs.map(id => apiCalls.fetchPainting(id));
@@ -29,7 +29,7 @@ class App extends Component {
       painting["isSaved"] = false;
       return painting
     })
-    this.setState({ paintings: listWithStars });
+    this.setState({ paintings: listWithStars, isLoading: false });
   }
 
   activateSave = (e) => {
@@ -94,7 +94,11 @@ class App extends Component {
             <Route exact path="/" render={() => {
               return (
                 <section>
-                  <Canvas view={this.state.view} inputs={this.state.paintings} toggleSave={this.activateSave}/>
+                  <Canvas 
+                    view={this.state.view} 
+                    inputs={this.state.paintings} 
+                    toggleSave={this.activateSave} 
+                    isLoading={this.state.isLoading}/>
                   <Form searchPaintings={this.searchPaintings} changeView={this.changeView}/>
                 </section>
                 )
@@ -112,6 +116,7 @@ class App extends Component {
                     view={this.state.view} 
                     inputs={this.state.paintings} 
                     toggleSave={this.activateSave}
+                    isLoading={this.state.isLoading}
                     />
                   <Form 
                     searchPaintings={this.searchPaintings} 
@@ -130,6 +135,7 @@ class App extends Component {
                     view={this.state.view} 
                     inputs={this.state.saves} 
                     toggleSave={this.unSave}
+                    isLoading={this.state.isLoading}
                     />
                   <div className="home-container">
                     <Link to={`/`}>
