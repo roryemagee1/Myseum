@@ -1,0 +1,39 @@
+.container {
+  /* height: 100%; */
+  width: 100%;
+  /* border-radius: 30px; */
+  /* padding: 2em;
+  background-color: white; */
+}
+
+.save-button {
+  border-color: black;
+  background-color: rgba(255, 255, 255, 0);
+  font-family: 'Eczar', serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Pacifico', cursive;
+}
+
+.image {
+  width: 100%;
+}
+
+.image:hover + .painting-writing {
+  display: flex;
+}
+
+.painting-writing {
+  font-size: 0.5em;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  background-color: rgba(255, 255, 255, 0);
+  font-family: 'Eczar', serif;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  /* font-family: 'Pacifico', cursive; */
+  display: none;
+ }
+
+
+

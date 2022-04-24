@@ -1,38 +1,79 @@
-.App {
-  text-align: center;
+.easel {
+  /* height: 90vh;
+  width: 80vw;
+  left: 10vw;
+  right: 10vw;
+  position: relative; */
+  object-fit: contain;
+  height: 90%;
+  width: 80%;
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  z-index: -1;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.background {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+.everything {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  align-items: center; */
 }
 
-.App-link {
-  color: #61dafb;
+.title {
+  /* text-align: center; */
+  /* margin-bottom: 10vh; */
+  position: relative;
+  top: 0;
+  left: 0;
+  font-family: 'Eczar', serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Pacifico', cursive; 
+  /* Imported from https://fonts.google.com/specimen/Pacifico?preview.text=Myseum&preview.text_type=custom#standard-styles */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.easel-window {
+  /* height: 65vh;
+  width: 60vw;
+  position: relative;
+  top: 0vh;
+  left: 19vw; */
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  height: 55%;
+  width: 60%;
+  position: fixed;
+  top: 20vh;
+  left: 19vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.home-container {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 80%;
+  left: 38%;
+}
+
+.home-button {
+  border-color: black;
+  background-color: rgba(255, 255, 255, 0);
+  font-family: 'Eczar', serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Pacifico', cursive;
 }
