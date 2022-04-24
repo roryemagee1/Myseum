@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import Form from './Components/Form/Form.js';
 import Canvas from './Components/Canvas/Canvas.js';
 import apiCalls from './apiCalls';
+import { Route, Redirect, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -30,7 +31,7 @@ class App extends Component {
   }
 
   activateSave = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const input = e.target.id;
     const itemToChange = this.state.paintings.findIndex(painting => painting.objectID == input);
     if (!this.state.paintings[itemToChange].isSaved) {
@@ -53,7 +54,7 @@ class App extends Component {
   }
 
   unSave = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const input = e.target.id;
     const itemToChange = this.state.saves.findIndex(save => save.objectID == input);
     if (this.state.saves[itemToChange].isSaved) {
@@ -87,24 +88,77 @@ class App extends Component {
         <img src={artExhibit} className="background" alt="Posh art exhibit"/>
         <img src={easelandcanvas} className="easel" alt="Easel and canvas"/>
         <main>
-          {!this.state.view &&
+          <Switch>
+            <Route exact path="/" render={() => {
+              return (
+                <section>
+                  <Canvas view={this.state.view} inputs={this.state.paintings} toggleSave={this.activateSave}/>
+                  <Form searchPaintings={this.searchPaintings} changeView={this.changeView}/>
+                </section>
+                )
+              }
+            }/>
+    
+            <Route exact path="/search/:query" render={({ match }) => {
+              return (
+                <section>
+                  <Canvas 
+                    view={this.state.view} 
+                    inputs={this.state.paintings} 
+                    toggleSave={this.activateSave}
+                    />
+                  <Form 
+                    searchPaintings={this.searchPaintings} 
+                    changeView={this.changeView}
+                    query={match.params.query}
+                    />
+                </section>
+                )
+              }
+            }/>
+
+
+            <Route exact path='/saves' render={() => {
+              return ( 
+                <section>
+                  <Canvas 
+                    view={this.state.view} 
+                    inputs={this.state.saves} 
+                    toggleSave={this.unSave}
+                    />
+                  <div className="home-container">
+                    <Link to={`/`}>
+                      <button className="home-button" value="" onClick={(e) => this.homeView(e)}> Return to Search </button>
+                    </Link>
+                  </div>
+                </section>
+                )
+              } 
+            }/>
+            <Route render={({ match }) => {
+              return (
+                <Redirect to='/' />
+              )
+            }
+            } />
+          </Switch>
+
+
+
+          {/* {!this.state.view &&
             <section>
-              <div className="easel-window">
-                <Canvas view={this.state.view} inputs={this.state.paintings} toggleSave={this.activateSave}/>
-              </div>
+              <Canvas view={this.state.view} inputs={this.state.paintings} toggleSave={this.activateSave}/>
               <Form searchPaintings={this.searchPaintings} changeView={this.changeView}/>
             </section>
           }
           {this.state.view &&
             <section>
-              <div className="easel-window">
                 <Canvas view={this.state.view} inputs={this.state.saves} toggleSave={this.unSave}/>
-              </div>
               <div className="home-container">
                 <button className="home-button" value="" onClick={(e) => this.homeView(e)}> Return to Search </button>
               </div>
             </section>
-          }
+          } */}
         </main>
       </div>
     );
