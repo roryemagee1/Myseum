@@ -98,7 +98,16 @@ class App extends Component {
                 )
               }
             }/>
-            {/* <Route exact path='/search/:q' render={() => {
+            <Route exact path="/search/:query" render={() => {
+              return (
+                <section>
+                  <Canvas view={this.state.view} inputs={this.state.paintings} toggleSave={this.activateSave}/>
+                  <Form searchPaintings={this.searchPaintings} changeView={this.changeView}/>
+                </section>
+                )
+              }
+            }/>
+            <Route exact path='/favorites' render={() => {
               return ( 
                 <section>
                   <Canvas view={this.state.view} inputs={this.state.saves} toggleSave={this.unSave}/>
@@ -108,7 +117,7 @@ class App extends Component {
                 </section>
                 )
               } 
-            }/> */}
+            }/>
             <Route render={({ match }) => {
               return (
                 <Redirect to='/' />
