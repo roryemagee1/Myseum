@@ -1,10 +1,10 @@
 import './App.css';
-import easelandcanvas from './Assets/easelandcanvas.png';
-import artExhibit from './Assets/ArtExhibit.jpeg'
+import easelandcanvas from '../../Assets/easelandcanvas.png';
+import artExhibit from '../../Assets/ArtExhibit.jpeg'
 import React, { Component } from 'react';
-import Form from './Components/Form/Form.js';
-import Canvas from './Components/Canvas/Canvas.js';
-import apiCalls from './apiCalls';
+import Form from '../Form/Form.js';
+import Canvas from '../Canvas/Canvas.js';
+import apiCalls from '../../apiCalls';
 import { Route, Redirect, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -13,7 +13,9 @@ class App extends Component {
     this.state = {
       paintings: [],
       saves: [],
-      view: ''
+      view: '',
+      error: '',
+      loading: false
     }
   }
   
@@ -100,6 +102,10 @@ class App extends Component {
             }/>
     
             <Route exact path="/search/:query" render={({ match }) => {
+              // if (!this.state.paintings.length) {
+              //   this.searchPaintings(match.params.query);
+              // }
+              
               return (
                 <section>
                   <Canvas 
@@ -110,7 +116,6 @@ class App extends Component {
                   <Form 
                     searchPaintings={this.searchPaintings} 
                     changeView={this.changeView}
-                    query={match.params.query}
                     />
                 </section>
                 )
