@@ -1,25 +1,25 @@
 {
-  "objectID": 485308,
-  "isHighlight": true,
-  "accessionNumber": "1989.349",
-  "accessionYear": "1989",
-  "isPublicDomain": false,
-  "primaryImage": "",
-  "primaryImageSmall": "",
+  "objectID": 436524,
+  "isHighlight": false,
+  "accessionNumber": "49.41",
+  "accessionYear": "1949",
+  "isPublicDomain": true,
+  "primaryImage": "https://images.metmuseum.org/CRDImages/ep/original/DP229743.jpg",
+  "primaryImageSmall": "https://images.metmuseum.org/CRDImages/ep/web-large/DP229743.jpg",
   "additionalImages": [],
   "constituents": [
       {
-          "constituentID": 164422,
+          "constituentID": 161947,
           "role": "Artist",
-          "name": "Joan Mitchell",
-          "constituentULAN_URL": "http://vocab.getty.edu/page/ulan/500000901",
-          "constituentWikidata_URL": "https://www.wikidata.org/wiki/Q469934",
-          "gender": "Female"
+          "name": "Vincent van Gogh",
+          "constituentULAN_URL": "http://vocab.getty.edu/page/ulan/500115588",
+          "constituentWikidata_URL": "https://www.wikidata.org/wiki/Q5582",
+          "gender": ""
       }
   ],
-  "department": "Modern and Contemporary Art",
+  "department": "European Paintings",
   "objectName": "Painting",
-  "title": "Sunflower",
+  "title": "Sunflowers",
   "culture": "",
   "period": "",
   "dynasty": "",
@@ -27,41 +27,41 @@
   "portfolio": "",
   "artistRole": "Artist",
   "artistPrefix": "",
-  "artistDisplayName": "Joan Mitchell",
-  "artistDisplayBio": "American, Chicago, Illinois 1925–1992 Paris",
+  "artistDisplayName": "Vincent van Gogh",
+  "artistDisplayBio": "Dutch, Zundert 1853–1890 Auvers-sur-Oise",
   "artistSuffix": "",
-  "artistAlphaSort": "Mitchell, Joan",
-  "artistNationality": "American",
-  "artistBeginDate": "1925",
-  "artistEndDate": "1992",
-  "artistGender": "Female",
-  "artistWikidata_URL": "https://www.wikidata.org/wiki/Q469934",
-  "artistULAN_URL": "http://vocab.getty.edu/page/ulan/500000901",
-  "objectDate": "1969",
-  "objectBeginDate": 1969,
-  "objectEndDate": 1969,
+  "artistAlphaSort": "Gogh, Vincent van",
+  "artistNationality": "Dutch",
+  "artistBeginDate": "1853",
+  "artistEndDate": "1890",
+  "artistGender": "",
+  "artistWikidata_URL": "https://www.wikidata.org/wiki/Q5582",
+  "artistULAN_URL": "http://vocab.getty.edu/page/ulan/500115588",
+  "objectDate": "1887",
+  "objectBeginDate": 1887,
+  "objectEndDate": 1887,
   "medium": "Oil on canvas",
-  "dimensions": "102 1/4 in. × 70 3/4 in. (259.7 × 179.7 cm)",
+  "dimensions": "17 x 24 in. (43.2 x 61 cm)",
   "measurements": [
       {
           "elementName": "Overall",
           "elementDescription": null,
           "elementMeasurements": {
-              "Height": 259.7155,
-              "Width": 179.70535
+              "Height": 43.2,
+              "Width": 61
           }
       },
       {
           "elementName": "Frame",
           "elementDescription": null,
           "elementMeasurements": {
-              "Depth": 7.620015,
-              "Height": 267.01804,
-              "Width": 187.32538
+              "Depth": 6.35,
+              "Height": 66.6751,
+              "Width": 85.0902
           }
       }
   ],
-  "creditLine": "Gift of Pierre Matisse, 1989",
+  "creditLine": "Rogers Fund, 1949",
   "geographyType": "",
   "city": "",
   "state": "",
@@ -76,17 +76,22 @@
   "classification": "Paintings",
   "rightsAndReproduction": "",
   "linkResource": "",
-  "metadataDate": "2021-10-02T04:36:27.257Z",
+  "metadataDate": "2021-11-16T04:35:25.657Z",
   "repository": "Metropolitan Museum of Art, New York, NY",
-  "objectURL": "https://www.metmuseum.org/art/collection/search/485308",
+  "objectURL": "https://www.metmuseum.org/art/collection/search/436524",
   "tags": [
+      {
+          "term": "Still Life",
+          "AAT_URL": "http://vocab.getty.edu/page/aat/300015638",
+          "Wikidata_URL": "https://www.wikidata.org/wiki/Q170571"
+      },
       {
           "term": "Sunflowers",
           "AAT_URL": "http://vocab.getty.edu/page/aat/300404749",
           "Wikidata_URL": "https://www.wikidata.org/wiki/Q171497"
       }
   ],
-  "objectWikidata_URL": "https://www.wikidata.org/wiki/Q19922136",
+  "objectWikidata_URL": "https://www.wikidata.org/wiki/Q9213165",
   "isTimelineWork": false,
-  "GalleryNumber": ""
+  "GalleryNumber": "825"
 }
