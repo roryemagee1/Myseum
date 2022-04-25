@@ -51,11 +51,11 @@ Once they find a painting they like, they are just one tap of the Save button aw
 
 ## Home page
 
-![](https://media.giphy.com/media/EC0tqsR5wuiq0qKy5S/giphy.gif)
+![](https://media.giphy.com/media/DIxlG97NgRsbgwM7jO/giphy.gif)
 
 ## Saves page
 
-![](https://media.giphy.com/media/4LQiej0kSnFoWd6IaD/giphy.gif)
+![](https://media.giphy.com/media/mI6Fj8lXnp9y8tDwYv/giphy.gif)
 
 # Future Additions
 
