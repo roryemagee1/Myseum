@@ -6,6 +6,7 @@ import Form from '../Form/Form.js';
 import Canvas from '../Canvas/Canvas.js';
 import apiCalls from '../../apiCalls';
 import { Route, Redirect, Switch, Link } from 'react-router-dom';
+import springCleaning from '../../Utilities/springCleaning';
 
 class App extends Component {
   constructor() {
@@ -25,7 +26,8 @@ class App extends Component {
     const dataIDs = await promisePaintingIDs;
     const paintingPromises = dataIDs.objectIDs.map(id => apiCalls.fetchPainting(id));
     const paintingsList = await Promise.all(paintingPromises);
-    const listWithStars = paintingsList.map(painting => {
+    const listWithStars = paintingsList.filter(painting => springCleaning.removeImagelessData(painting))
+    .map(painting => {
       painting["isSaved"] = false;
       return painting
     })
