@@ -33,8 +33,20 @@ describe('HomePage Tests', () => {
       .contains('Myseum')
   })
 
-  it('Should contain an empty search input', () => {
+  it('Should contain a form with an input field, a submission button, and a button for showing saved paitnings', () => {
+    cy.get('form')
+      .children()
+      .should('have.length', 3)
+
     cy.get('input')
-      .should('have.attr', 'src')
+      .should('have.attr', 'placeholder')
+      .and('eq', 'Search')
+
+    cy.get('.search-button')
+      .contains('Go')
+
+    cy.get('.view-saves')
+      .should('have.attr', 'value')
+      .and('eq', 'toSaves')
   })
 })
