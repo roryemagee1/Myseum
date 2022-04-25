@@ -158,6 +158,39 @@ describe('HomePage Tests', () => {
       .should('have.attr', 'src')
       .and('eq', 'https://images.metmuseum.org/CRDImages/ep/original/DP229743.jpg')
 
+    cy.get('.grid')
+    .children()
+    .should('have.length', 1)
+  })
+
+  it('Should be able to delete a saved painting from the Saved Painting View by click the Unsave button', () => {
+    cy.get('input')
+      .type('sunflower')
+    
+    cy.get('.search-button')
+      .click()
+
+    cy.get('.save-button')
+      .first()
+      .click()
+
+    cy.get('.save-button')
+      .first()
+      .contains('Saved!')
+
+    cy.get('.view-saves')
+      .click()
+
+    cy.get('.painting-image')
+      .should('have.attr', 'src')
+      .and('eq', 'https://images.metmuseum.org/CRDImages/ep/original/DP229743.jpg')
+
+    cy.get('.save-button')
+      .click()
+
+    cy.get('.grid')
+    .children()
+    .should('have.length', 0)
   })
 
 })
