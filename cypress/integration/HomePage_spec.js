@@ -88,8 +88,6 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
-
-    cy.wait(2000)
     
     cy.url()
       .should('eq', 'http://localhost:3000/search/sunflower')
@@ -101,8 +99,6 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
-
-    cy.wait(2000)
 
     cy.get('.painting-image')
       .should('have.attr', 'src')
@@ -119,8 +115,6 @@ describe('HomePage Tests', () => {
     cy.get('.search-button')
       .click()
 
-    cy.wait(2000)
-
     cy.get('h1')
       .contains('No paintings match that search.')
   })
@@ -131,8 +125,6 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
-    
-    cy.wait(2000)
 
     cy.get('.save-button')
       .first()
@@ -149,8 +141,6 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
-    
-    cy.wait(2000)
 
     cy.get('.save-button')
       .click({multiple: true})
@@ -174,8 +164,6 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
-    
-    cy.wait(2000)
 
     cy.get('.save-button')
       .first()
@@ -203,8 +191,6 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
-    
-    cy.wait(2000)
 
     cy.get('.save-button')
       .click({ multiple: true })
@@ -223,8 +209,6 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
-
-    cy.wait(2000)
 
     cy.get('.save-button')
       .first()
@@ -255,8 +239,6 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
-    
-    cy.wait(2000)
 
     cy.get('.save-button')
       .first()
@@ -290,8 +272,6 @@ describe('HomePage Tests', () => {
     cy.get('.search-button')
       .click()
 
-    cy.wait(2000)
-
     cy.get('.save-button')
       .first()
       .click()
@@ -317,8 +297,6 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
-    
-    cy.wait(2000)
 
     cy.get('.save-button')
       .first()
