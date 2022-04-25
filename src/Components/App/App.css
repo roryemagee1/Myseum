@@ -4,7 +4,7 @@
   left: 10vw;
   right: 10vw;
   position: relative; */
-  object-fit: contain;
+  /* object-fit: contain; */
   height: 90%;
   width: 80%;
   position: fixed;
@@ -58,7 +58,13 @@
   left: 19vw;
   overflow-x: hidden;
   overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+
+.easel-window::-webkit-scrollbar {
+  display: none;
+} 
 
 .home-container {
   object-fit: cover;
