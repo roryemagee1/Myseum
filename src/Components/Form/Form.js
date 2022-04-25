@@ -1,6 +1,7 @@
 import './Form.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Form extends Component {
   constructor() {
@@ -11,13 +12,11 @@ class Form extends Component {
   }
 
   updateSearch = (e) => {
-    // e.preventDefault();
     const {name, value} = e.target;
     this.setState({ [name]: value });
   }
 
   submitSearch = (e) => {
-    // e.preventDefault();
     if (this.state.search) {
     this.props.searchPaintings(this.state.search);
     this.clearSearch();
@@ -29,7 +28,6 @@ class Form extends Component {
   }
 
   updateView = (e) => {
-    // e.preventDefault();
     const newView = e.target.value;
     this.props.changeView(newView);
   }
@@ -52,3 +50,8 @@ class Form extends Component {
 }
 
 export default Form;
+
+Form.propTypes = { 
+  searchPaintings: PropTypes.func,
+  changeView: PropTypes.func
+}

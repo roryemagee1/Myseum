@@ -1,10 +1,4 @@
 .easel {
-  /* height: 90vh;
-  width: 80vw;
-  left: 10vw;
-  right: 10vw;
-  position: relative; */
-  object-fit: contain;
   height: 90%;
   width: 80%;
   position: fixed;
@@ -33,8 +27,6 @@
 }
 
 .title {
-  /* text-align: center; */
-  /* margin-bottom: 10vh; */
   position: relative;
   top: 0;
   left: 0;
@@ -45,12 +37,6 @@
 }
 
 .easel-window {
-  /* height: 65vh;
-  width: 60vw;
-  position: relative;
-  top: 0vh;
-  left: 19vw; */
-  /* background-color: rgba(255, 255, 255, 0.5); */
   height: 55%;
   width: 60%;
   position: fixed;
@@ -58,7 +44,13 @@
   left: 19vw;
   overflow-x: hidden;
   overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+
+.easel-window::-webkit-scrollbar {
+  display: none;
+} 
 
 .home-container {
   object-fit: cover;
@@ -67,9 +59,6 @@
   position: fixed;
   top: 80%;
   left: 45%;
-  /* display: flex;
-  justify-content: center;
-  align-items: flex-end; */
 }
 
 .home-button {
@@ -78,4 +67,8 @@
   font-family: 'Eczar', serif;
   font-family: 'Open Sans', sans-serif;
   font-family: 'Pacifico', cursive;
+}
+
+h1 {
+  padding-left: 1em;
 }

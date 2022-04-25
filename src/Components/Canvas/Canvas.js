@@ -2,6 +2,7 @@ import './Canvas.css'
 import React from 'react';
 import ReactLoading from 'react-loading';
 import Art from '../Art/Art.js';
+import PropTypes from 'prop-types';
 
 const Canvas = ({ inputs, toggleSave, view, isLoading, error }) => {
   let output;
@@ -41,3 +42,11 @@ const Canvas = ({ inputs, toggleSave, view, isLoading, error }) => {
 }
 
 export default Canvas;
+
+Canvas.propTypes = { 
+    inputs: PropTypes.arrayOf(PropTypes.object),
+    toggleSave: PropTypes.func,
+    view: PropTypes.string,
+    isLoading: PropTypes.bool,
+    error: PropTypes.string
+  }

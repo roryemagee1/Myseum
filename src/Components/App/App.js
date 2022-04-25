@@ -39,7 +39,6 @@ class App extends Component {
   }
       
   activateSave = (e) => {
-    // e.preventDefault();
     const input = e.target.id;
     const itemToChange = this.state.paintings.findIndex(painting => painting.objectID == input);
     if (!this.state.paintings[itemToChange].isSaved) {
@@ -62,7 +61,6 @@ class App extends Component {
   }
 
   unSave = (e) => {
-    // e.preventDefault();
     const input = e.target.id;
     const itemToChange = this.state.saves.findIndex(save => save.objectID == input);
     if (this.state.saves[itemToChange].isSaved) {
@@ -105,17 +103,14 @@ class App extends Component {
                     inputs={this.state.paintings} 
                     toggleSave={this.activateSave} 
                     isLoading={this.state.isLoading}/>
-                  <Form searchPaintings={this.searchPaintings} changeView={this.changeView}/>
+                  <Form 
+                    searchPaintings={this.searchPaintings} 
+                    changeView={this.changeView}/>
                 </section>
                 )
               }
             }/>
-    
             <Route exact path="/search/:query" render={({ match }) => {
-              // if (!this.state.paintings.length) {
-              //   this.searchPaintings(match.params.query);
-              // }
-
               return (
                 <section>
                   <Canvas 
@@ -133,8 +128,6 @@ class App extends Component {
                 ) 
               }
             }/>
-
-
             <Route exact path='/saves' render={() => {
               return ( 
                 <section>
@@ -160,23 +153,6 @@ class App extends Component {
             }
             } />
           </Switch>
-
-
-
-          {/* {!this.state.view &&
-            <section>
-              <Canvas view={this.state.view} inputs={this.state.paintings} toggleSave={this.activateSave}/>
-              <Form searchPaintings={this.searchPaintings} changeView={this.changeView}/>
-            </section>
-          }
-          {this.state.view &&
-            <section>
-                <Canvas view={this.state.view} inputs={this.state.saves} toggleSave={this.unSave}/>
-              <div className="home-container">
-                <button className="home-button" value="" onClick={(e) => this.homeView(e)}> Return to Search </button>
-              </div>
-            </section>
-          } */}
         </main>
       </div>
     );
