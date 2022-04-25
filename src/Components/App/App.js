@@ -105,7 +105,9 @@ class App extends Component {
                     inputs={this.state.paintings} 
                     toggleSave={this.activateSave} 
                     isLoading={this.state.isLoading}/>
-                  <Form searchPaintings={this.searchPaintings} changeView={this.changeView}/>
+                  <Form 
+                    searchPaintings={this.searchPaintings} 
+                    changeView={this.changeView}/>
                 </section>
                 )
               }
