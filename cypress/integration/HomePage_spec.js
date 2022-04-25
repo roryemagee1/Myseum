@@ -55,4 +55,13 @@ describe('HomePage Tests', () => {
       .type('sunflower')
       .should('have.value', 'sunflower')
   })
+
+  it('The input submission button should not execute the search function unless the input is not empty', () => {
+    cy.get('input')
+      .should('have.value', '')
+      .click()
+
+    cy.get('spinner').should('not.exist')
+  })
+
 })
