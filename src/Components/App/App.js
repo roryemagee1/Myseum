@@ -21,19 +21,23 @@ class App extends Component {
   }
   
   searchPaintings = async (search) => {
-    this.setState({ paintings: [], isLoading: true })
+    this.setState({ paintings: [], isLoading: true, error: '' })
     const promisePaintingIDs = apiCalls.fetchPaintingIDs(search);
     const dataIDs = await promisePaintingIDs;
+    if (!dataIDs.objectIDs) {
+      this.setState({ paintings: [], isLoading: false, error: 'No paintings match that search.'})
+    } else {
     const paintingPromises = dataIDs.objectIDs.map(id => apiCalls.fetchPainting(id));
     const paintingsList = await Promise.all(paintingPromises);
-    const listWithStars = paintingsList.filter(painting => springCleaning.removeImagelessData(painting))
+    const listWithSaves = paintingsList.filter(painting => springCleaning.removeImagelessData(painting))
     .map(painting => {
       painting["isSaved"] = false;
       return painting
     })
-    this.setState({ paintings: listWithStars, isLoading: false });
+    this.setState({ paintings: listWithSaves, isLoading: false });
+    }
   }
-
+      
   activateSave = (e) => {
     // e.preventDefault();
     const input = e.target.id;
@@ -111,7 +115,7 @@ class App extends Component {
               // if (!this.state.paintings.length) {
               //   this.searchPaintings(match.params.query);
               // }
-              
+
               return (
                 <section>
                   <Canvas 
@@ -119,13 +123,14 @@ class App extends Component {
                     inputs={this.state.paintings} 
                     toggleSave={this.activateSave}
                     isLoading={this.state.isLoading}
+                    error={this.state.error}
                     />
                   <Form 
                     searchPaintings={this.searchPaintings} 
                     changeView={this.changeView}
                     />
                 </section>
-                )
+                ) 
               }
             }/>
 
