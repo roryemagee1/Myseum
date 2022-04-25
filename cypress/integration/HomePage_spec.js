@@ -6,7 +6,8 @@ beforeEach(() => {
 
 describe('HomePage Tests', () => {
   it('should display the home url when the webpage loads', () => {
-    cy.url().should('eq', 'http://localhost:3000/');
+    cy.url()
+      .should('eq', 'http://localhost:3000/');
   })
 
   it('Should contain an art exhibit background image, a blank canvas, and a Myseum header', () => {
@@ -15,8 +16,8 @@ describe('HomePage Tests', () => {
       .and('contain', '/static/media/ArtExhibit.73a73c5419becb2a9d24.jpeg')
 
     cy.get('.easel')
-    .should('have.attr', 'src')
-    .and('contain', '/static/media/easelandcanvas.b7ffcfe6e6fd17ea82e1.png')
+      .should('have.attr', 'src')
+      .and('contain', '/static/media/easelandcanvas.b7ffcfe6e6fd17ea82e1.png')
 
     cy.get('h1')
       .contains('Myseum')
@@ -62,6 +63,17 @@ describe('HomePage Tests', () => {
       .click()
 
     cy.get('spinner').should('not.exist')
+  })
+
+  it('Should update the url path to include the search query upon search submission', () => {
+    cy.get('input')
+      .type('sunflower')
+    
+    cy.get('.search-button')
+      .click()
+    
+    cy.url()
+      .should('eq', 'http://localhost:3000/search/sunflower')
   })
 
 })
