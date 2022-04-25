@@ -42,7 +42,7 @@ class Form extends Component {
           <button className="search-button" onClick={(e) => this.submitSearch(e)}> Go </button>
         </Link>
         <Link to={`/saves`}>
-          <button className="search-button" value="toSaves" onClick={(e) => this.updateView(e)}> View Saved Paintings </button>
+          <button className="view-saves" value="toSaves" onClick={(e) => this.updateView(e)}> View Saved Paintings </button>
         </Link>
       </form>
     );
