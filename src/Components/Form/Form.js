@@ -12,13 +12,11 @@ class Form extends Component {
   }
 
   updateSearch = (e) => {
-    // e.preventDefault();
     const {name, value} = e.target;
     this.setState({ [name]: value });
   }
 
   submitSearch = (e) => {
-    // e.preventDefault();
     if (this.state.search) {
     this.props.searchPaintings(this.state.search);
     this.clearSearch();
@@ -30,7 +28,6 @@ class Form extends Component {
   }
 
   updateView = (e) => {
-    // e.preventDefault();
     const newView = e.target.value;
     this.props.changeView(newView);
   }
