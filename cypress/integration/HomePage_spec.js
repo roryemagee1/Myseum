@@ -114,7 +114,6 @@ describe('HomePage Tests', () => {
 
     cy.get('h1')
       .contains('No paintings match that search.')
-  
   })
 
   it('Should be able to save a painting when the user clicks on the Save button', () => {
@@ -133,7 +132,23 @@ describe('HomePage Tests', () => {
     cy.get('.save-button')
       .first()
       .contains('Saved!')
-      
+  })
+
+  it('Should be able to save multiple paintings', () => {
+    cy.get('input')
+      .type('sunflower')
+    
+    cy.get('.search-button')
+      .click()
+    
+    cy.wait(2000)
+
+    cy.get('.save-button')
+      .click({multiple: true})
+
+    cy.get('.save-button')
+      .first()
+      .contains('Saved!')
   })
 
   it('Should update the url path when the user clicks View Saved Paintings button', () => {
@@ -169,8 +184,28 @@ describe('HomePage Tests', () => {
       .and('eq', 'https://images.metmuseum.org/CRDImages/ep/original/DP229743.jpg')
 
     cy.get('.grid')
-    .children()
-    .should('have.length', 1)
+      .children()
+      .should('have.length', 1)
+  })
+
+  it('Should be able to save multiple paintings', () => {
+    cy.get('input')
+      .type('sunflower')
+    
+    cy.get('.search-button')
+      .click()
+    
+    cy.wait(2000)
+
+    cy.get('.save-button')
+      .click({ multiple: true })
+    
+    cy.get('.view-saves')
+      .click()
+
+    cy.get('.grid')
+      .children()
+      .should('have.length', 14)
   })
 
   it('Should be able to delete a saved painting from the Saved Painting View by click the Unsave button', () => {
@@ -201,8 +236,8 @@ describe('HomePage Tests', () => {
       .click()
 
     cy.get('.grid')
-    .children()
-    .should('have.length', 0)
+      .children()
+      .should('have.length', 0)
   })
 
   it('Should be able to return to the previous search results by clicking the Return to Search button on the saves page', () => {
@@ -232,11 +267,11 @@ describe('HomePage Tests', () => {
       .click()
 
     cy.url()
-    .should('eq', 'http://localhost:3000/')
+      .should('eq', 'http://localhost:3000/')
 
     cy.get('.grid')
-    .children()
-    .should('have.length', 14)
+      .children()
+      .should('have.length', 14)
   })
 
   it('Should not duplicate a painting in the saves section if the painting has already been searched before', () => {
@@ -260,13 +295,13 @@ describe('HomePage Tests', () => {
       .click()
 
     cy.url()
-    .should('eq', 'http://localhost:3000/saves')
+      .should('eq', 'http://localhost:3000/saves')
 
     cy.get('.home-button')
       .click()
 
     cy.url()
-    .should('eq', 'http://localhost:3000/')
+     .should('eq', 'http://localhost:3000/')
 
     cy.get('input')
       .type('sunflower')
@@ -277,8 +312,8 @@ describe('HomePage Tests', () => {
     cy.wait(2000)
 
     cy.get('.save-button')
-    .first()
-    .click()
+      .first()
+      .click()
 
     cy.get('.save-button')
       .first()
@@ -288,11 +323,18 @@ describe('HomePage Tests', () => {
       .click()
 
     cy.url()
-    .should('eq', 'http://localhost:3000/saves')
+      .should('eq', 'http://localhost:3000/saves')
 
     cy.get('.grid')
-    .children()
-    .should('have.length', 1)
+      .children()
+      .should('have.length', 1)
+  })
+
+  it('Should redirect the user to the home page if they type an invalid url', () => {
+    cy.visit('http://localhost:3000/asdfasdf')
+
+    cy.url()
+      .should('eq','http://localhost:3000/')
   })
 
 })
