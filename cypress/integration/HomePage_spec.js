@@ -2,6 +2,10 @@
 
 beforeEach(() => {
   cy.visit('http://localhost:3000/')
+
+  cy.intercept('GET', `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&q=sunflower`, {
+    fixture: 'search-id-results.json'
+  }).as('getIDs')
 })
 
 describe('HomePage Tests', () => {
@@ -74,6 +78,21 @@ describe('HomePage Tests', () => {
     
     cy.url()
       .should('eq', 'http://localhost:3000/search/sunflower')
+  })
+
+  it('Should show a grid of paintings equal to the number of IDs returned with paintings associated with them', () => {
+    cy.get('input')
+      .type('sunflower')
+    
+    cy.get('.search-button')
+      .click()
+
+    cy.get('.image')
+      .should('have.attr', 'src')
+    
+    cy.get('.grid')
+      .children()
+      .should('have.length', 14)
   })
 
 })
