@@ -6,6 +6,10 @@ beforeEach(() => {
   cy.intercept('GET', `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&q=sunflower`, {
     fixture: 'search-id-results.json'
   }).as('getIDs')
+
+  cy.intercept('GET', `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&q=asdfasdf`, {
+    fixture: 'search-id-no-results.json'
+  }).as('noIDs')
 })
 
 describe('HomePage Tests', () => {
@@ -87,12 +91,24 @@ describe('HomePage Tests', () => {
     cy.get('.search-button')
       .click()
 
-    cy.get('.image')
+    cy.get('.painting-image')
       .should('have.attr', 'src')
     
     cy.get('.grid')
       .children()
       .should('have.length', 14)
+  })
+
+  it('Should display an error message when no paintings match the search criteria', () => {
+    cy.get('input')
+      .type('asdfasdf')
+    
+    cy.get('.search-button')
+      .click()
+
+    cy.get('h1')
+      .contains('No paintings match that search.')
+  
   })
 
 })

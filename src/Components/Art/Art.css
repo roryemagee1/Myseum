@@ -14,11 +14,11 @@
   font-family: 'Pacifico', cursive;
 }
 
-.image {
+.painting-image {
   width: 100%;
 }
 
-.image:hover + .painting-writing {
+.painting-image:hover + .painting-writing {
   display: flex;
 }
 
