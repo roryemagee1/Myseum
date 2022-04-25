@@ -79,6 +79,8 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
+
+    cy.wait(2000)
     
     cy.url()
       .should('eq', 'http://localhost:3000/search/sunflower')
@@ -90,6 +92,8 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
+
+    cy.wait(2000)
 
     cy.get('.painting-image')
       .should('have.attr', 'src')
@@ -106,6 +110,8 @@ describe('HomePage Tests', () => {
     cy.get('.search-button')
       .click()
 
+    cy.wait(2000)
+
     cy.get('h1')
       .contains('No paintings match that search.')
   
@@ -117,6 +123,8 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
+    
+    cy.wait(2000)
 
     cy.get('.save-button')
       .first()
@@ -142,6 +150,8 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
+    
+    cy.wait(2000)
 
     cy.get('.save-button')
       .first()
@@ -169,6 +179,8 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
+
+    cy.wait(2000)
 
     cy.get('.save-button')
       .first()
@@ -199,6 +211,8 @@ describe('HomePage Tests', () => {
     
     cy.get('.search-button')
       .click()
+    
+    cy.wait(2000)
 
     cy.get('.save-button')
       .first()
@@ -223,6 +237,62 @@ describe('HomePage Tests', () => {
     cy.get('.grid')
     .children()
     .should('have.length', 14)
+  })
+
+  it('Should not duplicate a painting in the saves section if the painting has already been searched before', () => {
+    cy.get('input')
+      .type('sunflower')
+    
+    cy.get('.search-button')
+      .click()
+
+    cy.wait(2000)
+
+    cy.get('.save-button')
+      .first()
+      .click()
+
+    cy.get('.save-button')
+      .first()
+      .contains('Saved!')
+
+    cy.get('.view-saves')
+      .click()
+
+    cy.url()
+    .should('eq', 'http://localhost:3000/saves')
+
+    cy.get('.home-button')
+      .click()
+
+    cy.url()
+    .should('eq', 'http://localhost:3000/')
+
+    cy.get('input')
+      .type('sunflower')
+    
+    cy.get('.search-button')
+      .click()
+    
+    cy.wait(2000)
+
+    cy.get('.save-button')
+    .first()
+    .click()
+
+    cy.get('.save-button')
+      .first()
+      .contains('Saved!')
+
+    cy.get('.view-saves')
+      .click()
+
+    cy.url()
+    .should('eq', 'http://localhost:3000/saves')
+
+    cy.get('.grid')
+    .children()
+    .should('have.length', 1)
   })
 
 })
