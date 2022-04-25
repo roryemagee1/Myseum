@@ -1,0 +1,92 @@
+{
+  "objectID": 485308,
+  "isHighlight": true,
+  "accessionNumber": "1989.349",
+  "accessionYear": "1989",
+  "isPublicDomain": false,
+  "primaryImage": "",
+  "primaryImageSmall": "",
+  "additionalImages": [],
+  "constituents": [
+      {
+          "constituentID": 164422,
+          "role": "Artist",
+          "name": "Joan Mitchell",
+          "constituentULAN_URL": "http://vocab.getty.edu/page/ulan/500000901",
+          "constituentWikidata_URL": "https://www.wikidata.org/wiki/Q469934",
+          "gender": "Female"
+      }
+  ],
+  "department": "Modern and Contemporary Art",
+  "objectName": "Painting",
+  "title": "Sunflower",
+  "culture": "",
+  "period": "",
+  "dynasty": "",
+  "reign": "",
+  "portfolio": "",
+  "artistRole": "Artist",
+  "artistPrefix": "",
+  "artistDisplayName": "Joan Mitchell",
+  "artistDisplayBio": "American, Chicago, Illinois 1925–1992 Paris",
+  "artistSuffix": "",
+  "artistAlphaSort": "Mitchell, Joan",
+  "artistNationality": "American",
+  "artistBeginDate": "1925",
+  "artistEndDate": "1992",
+  "artistGender": "Female",
+  "artistWikidata_URL": "https://www.wikidata.org/wiki/Q469934",
+  "artistULAN_URL": "http://vocab.getty.edu/page/ulan/500000901",
+  "objectDate": "1969",
+  "objectBeginDate": 1969,
+  "objectEndDate": 1969,
+  "medium": "Oil on canvas",
+  "dimensions": "102 1/4 in. × 70 3/4 in. (259.7 × 179.7 cm)",
+  "measurements": [
+      {
+          "elementName": "Overall",
+          "elementDescription": null,
+          "elementMeasurements": {
+              "Height": 259.7155,
+              "Width": 179.70535
+          }
+      },
+      {
+          "elementName": "Frame",
+          "elementDescription": null,
+          "elementMeasurements": {
+              "Depth": 7.620015,
+              "Height": 267.01804,
+              "Width": 187.32538
+          }
+      }
+  ],
+  "creditLine": "Gift of Pierre Matisse, 1989",
+  "geographyType": "",
+  "city": "",
+  "state": "",
+  "county": "",
+  "country": "",
+  "region": "",
+  "subregion": "",
+  "locale": "",
+  "locus": "",
+  "excavation": "",
+  "river": "",
+  "classification": "Paintings",
+  "rightsAndReproduction": "",
+  "linkResource": "",
+  "metadataDate": "2021-10-02T04:36:27.257Z",
+  "repository": "Metropolitan Museum of Art, New York, NY",
+  "objectURL": "https://www.metmuseum.org/art/collection/search/485308",
+  "tags": [
+      {
+          "term": "Sunflowers",
+          "AAT_URL": "http://vocab.getty.edu/page/aat/300404749",
+          "Wikidata_URL": "https://www.wikidata.org/wiki/Q171497"
+      }
+  ],
+  "objectWikidata_URL": "https://www.wikidata.org/wiki/Q19922136",
+  "isTimelineWork": false,
+  "GalleryNumber": ""
+}

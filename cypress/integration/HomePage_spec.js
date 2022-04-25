@@ -10,6 +10,15 @@ beforeEach(() => {
   cy.intercept('GET', `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&medium=Paintings&q=asdfasdf`, {
     fixture: 'search-id-no-results.json'
   }).as('noIDs')
+
+  cy.intercept('GET', `https://collectionapi.metmuseum.org/public/collection/v1/objects/436524`, {
+    fixture: 'search-painting-1.json'
+  }).as('getPainting1')
+
+  cy.intercept('GET', `https://collectionapi.metmuseum.org/public/collection/v1/objects/816522`, {
+    fixture: 'search-painting-2.json'
+  }).as('getPainting2')
+
 })
 
 describe('HomePage Tests', () => {
@@ -42,7 +51,7 @@ describe('HomePage Tests', () => {
       .contains('Myseum')
   })
 
-  it('Should contain a form with an input field, a submission button, and a button for showing saved paitnings', () => {
+  it('Should contain a form with an input field, a submission button, and a button for showing saved paintings', () => {
     cy.get('form')
       .children()
       .should('have.length', 3)
@@ -100,7 +109,7 @@ describe('HomePage Tests', () => {
     
     cy.get('.grid')
       .children()
-      .should('have.length', 14)
+      .should('have.length', 1)
   })
 
   it('Should display an error message when no paintings match the search criteria', () => {
@@ -181,7 +190,7 @@ describe('HomePage Tests', () => {
 
     cy.get('.painting-image')
       .should('have.attr', 'src')
-      .and('eq', 'https://images.metmuseum.org/CRDImages/ep/original/DP229743.jpg')
+      .and('eq', 'https://images.metmuseum.org/CRDImages/ep/original/DP-19714-001.jpg')
 
     cy.get('.grid')
       .children()
@@ -205,7 +214,7 @@ describe('HomePage Tests', () => {
 
     cy.get('.grid')
       .children()
-      .should('have.length', 14)
+      .should('have.length', 1)
   })
 
   it('Should be able to delete a saved painting from the Saved Painting View by click the Unsave button', () => {
@@ -230,7 +239,7 @@ describe('HomePage Tests', () => {
 
     cy.get('.painting-image')
       .should('have.attr', 'src')
-      .and('eq', 'https://images.metmuseum.org/CRDImages/ep/original/DP229743.jpg')
+      .and('eq', 'https://images.metmuseum.org/CRDImages/ep/original/DP-19714-001.jpg')
 
     cy.get('.save-button')
       .click()
@@ -271,7 +280,7 @@ describe('HomePage Tests', () => {
 
     cy.get('.grid')
       .children()
-      .should('have.length', 14)
+      .should('have.length', 1)
   })
 
   it('Should not duplicate a painting in the saves section if the painting has already been searched before', () => {
