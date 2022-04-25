@@ -1,5 +1,6 @@
 import './Art.css'
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Art = ({ id, title, artistDisplayName, primaryImage, isSaved, toggleSave, view }) => {
   let saveStatus = "Save?";
@@ -20,3 +21,13 @@ const Art = ({ id, title, artistDisplayName, primaryImage, isSaved, toggleSave, 
 }
 
 export default Art;
+
+Art.propTypes = { 
+  id: PropTypes.number,
+  title: PropTypes.string, 
+  primaryImage: PropTypes.string,
+  isSaved: PropTypes.bool,
+  error: PropTypes.string,
+  toggleSave: PropTypes.func,
+  view: PropTypes.string,
+}

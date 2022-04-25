@@ -1,6 +1,7 @@
 import './Form.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Form extends Component {
   constructor() {
@@ -52,3 +53,8 @@ class Form extends Component {
 }
 
 export default Form;
+
+Form.propTypes = { 
+  searchPaintings: PropTypes.func,
+  changeView: PropTypes.func
+}
