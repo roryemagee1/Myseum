@@ -1,9 +1,5 @@
 .container {
-  /* height: 100%; */
   width: 100%;
-  /* border-radius: 30px; */
-  /* padding: 2em;
-  background-color: white; */
 }
 
 .save-button {
@@ -31,7 +27,6 @@
   font-family: 'Eczar', serif;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
-  /* font-family: 'Pacifico', cursive; */
   display: none;
  }
 

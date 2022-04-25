@@ -25,12 +25,6 @@
 }
 
 .easel-window {
-  /* height: 65vh;
-  width: 60vw;
-  position: relative;
-  top: 0vh;
-  left: 19vw; */
-  /* background-color: rgba(255, 255, 255, 0.5); */
   height: 55%;
   width: 60%;
   position: fixed;
