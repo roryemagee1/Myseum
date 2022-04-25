@@ -49,4 +49,10 @@ describe('HomePage Tests', () => {
       .should('have.attr', 'value')
       .and('eq', 'toSaves')
   })
+
+  it('Should have an input field that updates to reflect what is typed in it', () => {
+    cy.get('input')
+      .type('sunflower')
+      .should('have.value', 'sunflower')
+  })
 })
