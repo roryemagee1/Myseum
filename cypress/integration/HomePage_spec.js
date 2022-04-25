@@ -111,4 +111,53 @@ describe('HomePage Tests', () => {
   
   })
 
+  it('Should be able to save a painting when the user clicks on the Save button', () => {
+    cy.get('input')
+      .type('sunflower')
+    
+    cy.get('.search-button')
+      .click()
+
+    cy.get('.save-button')
+      .first()
+      .click()
+
+    cy.get('.save-button')
+      .first()
+      .contains('Saved!')
+      
+  })
+
+  it('Should update the url path when the user clicks View Saved Paintings button', () => {
+    cy.get('.view-saves')
+      .click()
+    
+    cy.url()
+      .should('eq', 'http://localhost:3000/saves')
+  })
+
+  it('Should be able to view a saved painting after clicking on the View Saved Paintings button', () => {
+    cy.get('input')
+      .type('sunflower')
+    
+    cy.get('.search-button')
+      .click()
+
+    cy.get('.save-button')
+      .first()
+      .click()
+
+    cy.get('.save-button')
+      .first()
+      .contains('Saved!')
+
+    cy.get('.view-saves')
+      .click()
+
+    cy.get('.painting-image')
+      .should('have.attr', 'src')
+      .and('eq', 'https://images.metmuseum.org/CRDImages/ep/original/DP229743.jpg')
+
+  })
+
 })
