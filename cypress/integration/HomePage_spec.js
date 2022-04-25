@@ -193,4 +193,36 @@ describe('HomePage Tests', () => {
     .should('have.length', 0)
   })
 
+  it('Should be able to return to the previous search results by clicking the Return to Search button on the saves page', () => {
+    cy.get('input')
+      .type('sunflower')
+    
+    cy.get('.search-button')
+      .click()
+
+    cy.get('.save-button')
+      .first()
+      .click()
+
+    cy.get('.save-button')
+      .first()
+      .contains('Saved!')
+
+    cy.get('.view-saves')
+      .click()
+
+    cy.url()
+    .should('eq', 'http://localhost:3000/saves')
+
+    cy.get('.home-button')
+      .click()
+
+    cy.url()
+    .should('eq', 'http://localhost:3000/')
+
+    cy.get('.grid')
+    .children()
+    .should('have.length', 14)
+  })
+
 })
