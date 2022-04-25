@@ -18,8 +18,10 @@ class Form extends Component {
 
   submitSearch = (e) => {
     // e.preventDefault();
+    if (this.state.search) {
     this.props.searchPaintings(this.state.search);
     this.clearSearch();
+    }
   }
 
   clearSearch = () => {
@@ -37,12 +39,12 @@ class Form extends Component {
 
     return (
       <form className="search">
-        <input className="search-bar" type="text" placeholder="Search" value={this.state.search} name="search" onChange={(e) => this.updateSearch(e)}/>
+        <input className="search-bar" type="text" placeholder="Search" value={this.state.search} name="search" onChange={(e) => this.updateSearch(e)} />
         <Link to={`/search/${query}`}>
           <button className="search-button" onClick={(e) => this.submitSearch(e)}> Go </button>
         </Link>
         <Link to={`/saves`}>
-          <button className="search-button" value="toSaves" onClick={(e) => this.updateView(e)}> View Saved Paintings </button>
+          <button className="view-saves" value="toSaves" onClick={(e) => this.updateView(e)}> View Saved Paintings </button>
         </Link>
       </form>
     );

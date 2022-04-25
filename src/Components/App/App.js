@@ -6,6 +6,7 @@ import Form from '../Form/Form.js';
 import Canvas from '../Canvas/Canvas.js';
 import apiCalls from '../../apiCalls';
 import { Route, Redirect, Switch, Link } from 'react-router-dom';
+import springCleaning from '../../Utilities/springCleaning';
 
 class App extends Component {
   constructor() {
@@ -15,23 +16,28 @@ class App extends Component {
       saves: [],
       view: '',
       error: '',
-      loading: false
+      isLoading: false
     }
   }
   
   searchPaintings = async (search) => {
-    this.setState({ paintings: [] })
+    this.setState({ paintings: [], isLoading: true, error: '' })
     const promisePaintingIDs = apiCalls.fetchPaintingIDs(search);
     const dataIDs = await promisePaintingIDs;
+    if (!dataIDs.objectIDs) {
+      this.setState({ paintings: [], isLoading: false, error: 'No paintings match that search.'})
+    } else {
     const paintingPromises = dataIDs.objectIDs.map(id => apiCalls.fetchPainting(id));
     const paintingsList = await Promise.all(paintingPromises);
-    const listWithStars = paintingsList.map(painting => {
+    const listWithSaves = paintingsList.filter(painting => springCleaning.removeImagelessData(painting))
+    .map(painting => {
       painting["isSaved"] = false;
       return painting
     })
-    this.setState({ paintings: listWithStars });
+    this.setState({ paintings: listWithSaves, isLoading: false });
+    }
   }
-
+      
   activateSave = (e) => {
     // e.preventDefault();
     const input = e.target.id;
@@ -94,7 +100,11 @@ class App extends Component {
             <Route exact path="/" render={() => {
               return (
                 <section>
-                  <Canvas view={this.state.view} inputs={this.state.paintings} toggleSave={this.activateSave}/>
+                  <Canvas 
+                    view={this.state.view} 
+                    inputs={this.state.paintings} 
+                    toggleSave={this.activateSave} 
+                    isLoading={this.state.isLoading}/>
                   <Form searchPaintings={this.searchPaintings} changeView={this.changeView}/>
                 </section>
                 )
@@ -105,20 +115,22 @@ class App extends Component {
               // if (!this.state.paintings.length) {
               //   this.searchPaintings(match.params.query);
               // }
-              
+
               return (
                 <section>
                   <Canvas 
                     view={this.state.view} 
                     inputs={this.state.paintings} 
                     toggleSave={this.activateSave}
+                    isLoading={this.state.isLoading}
+                    error={this.state.error}
                     />
                   <Form 
                     searchPaintings={this.searchPaintings} 
                     changeView={this.changeView}
                     />
                 </section>
-                )
+                ) 
               }
             }/>
 
@@ -130,6 +142,7 @@ class App extends Component {
                     view={this.state.view} 
                     inputs={this.state.saves} 
                     toggleSave={this.unSave}
+                    isLoading={this.state.isLoading}
                     />
                   <div className="home-container">
                     <Link to={`/`}>

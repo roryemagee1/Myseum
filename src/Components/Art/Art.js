@@ -13,7 +13,7 @@ const Art = ({ id, title, artistDisplayName, primaryImage, isSaved, toggleSave, 
   return (
     <div  className="container">
       <button className="save-button" id={id} onClick={(e) => toggleSave(e)}> {saveStatus} </button>
-      <img className="image" src={primaryImage} alt={title} />
+      <img className="painting-image" src={primaryImage} alt={title} />
       <p className="painting-writing"> {title} by {artistDisplayName} </p>
     </div>
   )

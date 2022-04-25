@@ -15,7 +15,7 @@
   border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0) rgba(0, 0, 0, 1) rgba(255, 255, 255, 0);
 }
 
-.search-button {
+button {
   border-color: black;
   background-color: rgba(255, 255, 255, 0);
   font-family: 'Eczar', serif;
